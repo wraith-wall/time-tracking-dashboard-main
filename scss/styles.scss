@@ -273,6 +273,7 @@ body {
 @media (max-width: 575px) {
   .tracker {
     margin-block: 81px;
+    margin-inline: 24px;
     &__user {
       display: flex;
       position: relative;
@@ -333,6 +334,7 @@ body {
     }
   }
   #tracker__container {
+    width: 327px;
     display: flex;
     flex-direction: column;
     margin-top: 14px;
