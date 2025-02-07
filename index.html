@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/modern-normalize.css" />
+    <link rel="stylesheet" href="css/styles.min.css" />
+    <title>Frontend Mentor | Time tracking dashboard</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="tracker">
+          <article class="tracker__user">
+            <div class="tracker__avatar">
+              <img src="images/image-jeremy.png" alt="avatar" />
+            </div>
+            <div class="tracker__report">Report for</div>
+            <div class="tracker__username">Jeremy Robson</div>
+            <div class="tracker__timeframes">
+              <button class="tracker__button button" data-timeframe="daily">
+                Daily
+              </button>
+              <button class="tracker__button button" data-timeframe="weekly">
+                Weekly
+              </button>
+              <button class="tracker__button button" data-timeframe="monthly">
+                Monthly
+              </button>
+            </div>
+          </article>
+          <div id="tracker__container"></div>
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

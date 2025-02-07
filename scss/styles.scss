@@ -1,0 +1,342 @@
+%centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%text15px {
+  font-size: 15px;
+  font-weight: 400;
+  color: #bbc0ff;
+}
+
+%h2 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+}
+
+body {
+  font-family: "Rubik", serif;
+}
+
+.container {
+  @extend %centered;
+  min-height: 100vh;
+  background-color: #0e1323;
+}
+
+.tracker {
+  display: grid;
+  grid-template-columns: 255px 3fr;
+  grid-template-rows: 1fr;
+  gap: 30px;
+  &__user {
+    position: relative;
+    max-width: 255px;
+    height: 518px;
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    padding-block: 37px 32px;
+    padding-left: 32px;
+    padding-right: 84px;
+    background-color: #1c204b;
+    border-radius: 15px;
+    z-index: 0;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 354px;
+      background-color: #5747ea;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+      z-index: 1;
+    }
+  }
+  &__avatar {
+    width: 78px;
+    height: 78px;
+    z-index: 2;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+  &__timeframes {
+    display: flex;
+    flex-direction: column;
+    margin-top: 111px;
+    gap: 21px;
+    z-index: 2;
+  }
+  &__report {
+    @extend %text15px;
+    margin-top: 43px;
+    z-index: 2;
+  }
+  &__username {
+    font-weight: 300;
+    font-size: 40px;
+    color: #fff;
+    margin-top: 3px;
+    z-index: 2;
+  }
+  &__button {
+    padding: 0;
+    width: fit-content;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 18px;
+    color: #7078c9;
+  }
+  &__entry {
+    height: 243px;
+    padding: 74px 35px 32px 30px;
+    width: 255px;
+    border-radius: 15px;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 199px;
+      background-color: #1c204b;
+      bottom: -1px;
+      left: 0;
+      border-radius: 15px;
+      z-index: 1;
+      cursor: pointer;
+      transition: background-color 0.3s ease, filter 0.3s ease;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      right: 30px;
+      top: 81px;
+      width: 21px;
+      height: 5px;
+      background-color: #bbc0ff;
+      mask: url(../images/icon-ellipsis.svg) no-repeat;
+      mask-size: contain;
+      z-index: 2;
+      transition: background-color 0.3s ease;
+    }
+    &:hover::after {
+      background-color: #33397a;
+    }
+    &:hover::before {
+      background-color: #fff;
+      cursor: pointer;
+    }
+
+    h2 {
+      @extend %h2;
+      position: absolute;
+      z-index: 2;
+    }
+    &--orange {
+      background: #ff8b64 url(../images/icon-work.svg) no-repeat right 18px top -11px;
+      z-index: 0;
+    }
+    &--blue {
+      background: #55c2e6 url(../images/icon-play.svg) no-repeat right 21px top -5px;
+      z-index: 0;
+    }
+    &--red {
+      background: #ff5e7d url(../images/icon-study.svg) no-repeat right 17px top -7px;
+      z-index: 0;
+    }
+    &--green {
+      background: #4bcf82 url(../images/icon-exercise.svg) no-repeat right 17px
+        top 0px;
+      z-index: 0;
+    }
+    &--purple {
+      background: #7335d2 url(../images/icon-social.svg) no-repeat right 13px
+        top -14px;
+      z-index: 0;
+    }
+    &--yellow {
+      background: #f1c75b url(../images/icon-self-care.svg) no-repeat right 14px
+        top -10px;
+      z-index: 0;
+    }
+  }
+  &__current-timeframe {
+    font-weight: 300;
+    font-size: 56px;
+    color: #fff;
+    margin-top: 48px;
+    position: absolute;
+    z-index: 2;
+  }
+  &__previous-timeframe {
+    margin-top: 120px;
+    @extend %text15px;
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+.button.active {
+  color: #ffffff;
+}
+
+#tracker__container {
+  grid-column: 2 /3;
+  grid-row: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 1120px) {
+  .tracker {
+    gap: 10px;
+  }
+  #tracker__container {
+    column-gap: 10px;
+  }
+}
+
+@media (max-width: 1060px) {
+  .tracker {
+    grid-template-columns: 223px 3fr;
+    &__user {
+      padding-right: 32px;
+      width: 223px;
+    }
+    &__entry {
+      width: 223px;
+    }
+  }
+}
+
+@media (max-width: 925px) {
+  .tracker {
+    grid-template-columns: 190px 3fr;
+    &__user {
+      width: 190px;
+    }
+    &__entry {
+      width: 190px;
+    }
+    &__current-timeframe {
+      font-size: 47px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .tracker {
+    grid-template-columns: 180px 3fr;
+    &__user {
+      width: 180px;
+    }
+    &__entry {
+      width: 180px;
+    }
+  }
+}
+
+@media (max-width: 755px) {
+  .tracker {
+    margin-block: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__user {
+      width: 560px;
+      max-width: none;
+    }
+    &__timeframes {
+      margin-top: 160px;
+    }
+    #tracker__container {
+      width: 560px;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .tracker {
+    margin-block: 81px;
+    &__user {
+      display: flex;
+      position: relative;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      width: 327px;
+      height: 203px;
+      &::before {
+        height: 133px;
+      }
+    }
+    &__timeframes {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      margin-top: 58px;
+      padding: 0;
+    }
+    &__username {
+      font-size: 24px;
+      position: absolute;
+      right: 42px;
+      top: 61px;
+    }
+    &__avatar {
+      width: 64px;
+      height: 64px;
+      margin-right: 20px;
+    }
+    &__report {
+      margin-top: 7px;
+    }
+    &__button {
+      width: 109px;
+      margin: 0;
+      padding: 0;
+    }
+    &__entry {
+      height: 160px;
+      width: 327px;
+      padding: 66px 24px 28px 24px;
+      &::after {
+        height: 122px;
+      }
+      &::before {
+        right: 25px;
+        top: 76px;
+      }
+    }
+    &__current-timeframe {
+      font-size: 32px;
+      margin-top: 30px;
+    }
+    &__previous-timeframe {
+      margin-top: 40px;
+      right: 25px;
+    }
+  }
+  #tracker__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 14px;
+    gap: 24px;
+    align-items: center;
+  }
+}
